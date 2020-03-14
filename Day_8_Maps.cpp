@@ -12,32 +12,31 @@ int main() {
      int n;
      cin>>n;
      std::map<string,string> ph;
+     std::map<string,string>::iterator it;
      int i,flag;
-     string key[10],value[10],query[10000];
+     string key,value,query,vals;
      for(i=0;i<n;i++)
      {  
-         cin>>key[i];
-         cin>>value[i];
-         ph[key[i]]=value[i];
+         cin>>key;
+         cin>>value;
+         ph[key]=value;
          //cout<<"Printing input values"<<endl;
          //cout<<"Key "<<key[i]<<" "<<"Value "<<ph[key[i]]<<endl;
      }
      //cout<<"Input done"<<endl;
 
-     while(cin>>query[i])
+     while(cin>>query)
      {   flag=0;
          //cout<<"Query =" <<query[i]<<endl;
-         for(auto el:ph){
-             //cout<<el.first<<"and"<<el.second<<endl;
-             if(query[i]==el.first)
-                {cout<<el.first<<"="<<el.second<<endl;
-                    flag=1;
-                }
+         it=ph.find(query);
+        if(it == ph.end()) 
+            cout << "Not found"<<endl ; 
+        else
+            cout << it->first << "=" << it->second<<endl ; 
+      
+   
+
            
-         }
-         if(flag==0)
-            cout<<"Not found"<<endl;
-         i++;
-     }
+     } 
     return 0;
 }
